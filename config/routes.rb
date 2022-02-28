@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  
   namespace :admins_backoffice do
-    get 'admins/index'
+    resources :admins      # Administradores
+    resources :subjects    # Assuntos
+    resources :questions   # Perguntas
+    get 'welcome/index'    # DashBoard
+    # get 'admins/index'
+    # get 'admins/edit/:id', to: 'admins#edit'
   end
   namespace :site do
     get 'welcome/index'
+    get 'search', to: 'search#questions'
   end
   namespace :users_backoffice do
-    get 'welcome/index'
-  end
-  namespace :admins_backoffice do
     get 'welcome/index'
   end
 

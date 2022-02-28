@@ -32,6 +32,7 @@
           <!-- /.navbar-header -->
 
           <ul class="nav navbar-top-links navbar-right">
+            <%= current_admin.email %>
             </li>
             <!-- /.dropdown -->
             <li class="dropdown">
@@ -60,11 +61,23 @@
                       <% end %>
                     </li>
                     <li>
-                      <%= link_to admins_backoffice_admins_index_path do%>
+                      <%= link_to admins_backoffice_admins_path do%>
                         <i class="fa fa-users fa-fw"></i>
                         Administradores
                       <% end %>
                     </li>
+                    <li>
+                      <%= link_to admins_backoffice_subjects_path do%>
+                        <i class="fa fa-file-text-o fa-fw"></i>
+                        Assuntos/Áreas
+                      <% end %>
+                    </li>
+                    <li>
+                    <%= link_to admins_backoffice_questions_path do%>
+                      <i class="fa fa-question-circle fa-fw"></i>
+                      Perguntas
+                    <% end %>
+                  </li>
                   </ul>
               </div>
               <!-- /.sidebar-collapse -->
@@ -92,5 +105,16 @@
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag 'admins_backoffice' %>
+
+    <% if notice%>
+      <%= javascript_tag do %>
+        $.bootstrapGrowl('<%= notice %>', {
+          type: 'success', // (null, 'info', 'danger', 'success')
+          align: 'right', // ('left', 'right', or 'center')
+          allow_dismiss: true, // If true then will display a cross to close the popup.
+          stackup_spacing: 10 // spacing between consecutively stacked growls.
+        });
+      <% end %>
+    <% end %>
   </body>
 </html>
