@@ -1,5 +1,7 @@
 class Site::SearchController < SiteController
   def questions
-    @questions = Question.all
+    #@questions = Question.includes(:answers).page(params[:page])
+
+    @questions = Question._search_(params[:page], params[:term])
   end 
 end
